@@ -195,18 +195,16 @@ Componentes clave del diseño:
 
 
 **APIs DE BASES DE DATOS**
+
 ![API de base de datosl](static/Actividad6_Pantallas/API_Database.png)
 
 ![API de base de datosl](static/Actividad6_Pantallas/API_Database_2.png)
 
 
-###Diseño responsivo
+### Diseño responsivo
 **VISTA MÓVIL**
+
 ![Vista en télefono móvill](static/Actividad6_Pantallas/Diseño_Responsivo_Telefono.png)
+
 ![Vista en tabletll](static/Actividad6_Pantallas/Diseño_Responsivo_Tablet.png)
-
-
-
-
-
 

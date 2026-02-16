@@ -1,0 +1,202 @@
+:root {
+    /* Modo Claro */
+    --bg-color: #fafafa;
+    --card-bg: #ffffff;
+    --text-main: #262626;
+    --text-muted: #8e8e8e;
+    --accent: #0095f6;
+    --border: #dbdbdb;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Modo Oscuro */
+        --bg-color: #121212;
+        --card-bg: #1e1e1e;
+        --text-main: #f5f5f5;
+        --text-muted: #a8a8a8;
+        --border: #333333;
+        --shadow: rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* =======================
+   BASE
+======================= */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    transition: background 0.3s ease;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+/* =======================
+   FEED
+======================= */
+
+.feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 50px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.card a {
+    display: block;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* =======================
+   DETALLE DEL POST
+======================= */
+
+.post-detail-container {
+    display: flex;
+    max-width: 900px;
+    margin: 20px auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    min-height: 500px;
+}
+
+.post-image-side {
+    flex: 1.2;
+    background: #000;
+    display: flex;
+    align-items: center;
+}
+
+.post-info-side {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =======================
+   BOTÓN FAVORITOS
+======================= */
+
+.favorite-form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.favorite-btn {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s ease, transform 0.15s ease, opacity 0.2s;
+}
+
+.favorite-btn:hover {
+    opacity: 0.9;
+}
+
+.favorite-btn:active {
+    transform: scale(0.98);
+}
+
+/* Estado guardado ❤️ */
+.favorite-btn.saved {
+    background-color: #ab6666;
+    cursor: default;
+}
+
+/* Mensaje Guardado ✔ */
+.favorite-msg {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #22c55e;
+    display: none;
+}
+
+/* =======================
+   BOTÓN INSTAGRAM
+======================= */
+
+.btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-instagram:hover {
+    background-color: var(--bg-color);
+    border-color: var(--text-muted);
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+@media (max-width: 768px) {
+    .post-detail-container {
+        flex-direction: column;
+    }
+
+    .post-image-side img {
+        aspect-ratio: 1 / 1;
+    }
+}

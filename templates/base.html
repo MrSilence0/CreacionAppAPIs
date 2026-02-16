@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".favorite-form");
+    const btn = document.getElementById("favoriteBtn");
+    const msg = document.getElementById("favoriteMsg");
+
+    btn.addEventListener("click", async () => {
+        const postId = form.dataset.postId;
+        const trackId = form.dataset.trackId;
+        const title = form.dataset.title;
+
+        const response = await fetch(`/favorite/${postId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+                title: title,
+                track_id: trackId
+            })
+        });
+
+        if (response.ok) {
+            btn.innerText = "❤️ Guardado";
+            btn.classList.add("saved");
+            btn.disabled = true;
+
+            msg.innerText = "Guardado ✔";
+            msg.style.display = "block";
+        }
+    });
+});
+</script>
+
+<body>
+    <header>
+        <h1>Darkest Room</h1>
+        <p>Te muestro mi repertorio de canciones favoritas con cada una de mis publicaciones de instagram.</p>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

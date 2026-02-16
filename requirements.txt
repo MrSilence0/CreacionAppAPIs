@@ -1,0 +1,4 @@
+import requests en social_api.py
+flask
+requests
+spotipy

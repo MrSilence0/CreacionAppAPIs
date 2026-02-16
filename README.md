@@ -2,7 +2,7 @@
 Aplicación web desarrollada con APIs de streaming (spotify), redes sociales (simulación de Meta Graphics) y bases de datos (superbase). La aplicación simula un blog donde se comparten post de instagram. El usuario puede contribuir dando me gusta, la publicación y la canción se almacenarán en una base de datos en Superbase.
 
 
-##Estructura del proyecto.
+## Estructura del proyecto.
 
 ```text
 social_flask_app_ver2/
@@ -28,7 +28,7 @@ social_flask_app_ver2/
 └── requirements.txt        # Librerías necesarias (flask, requests, spotipy)
 ```
 
-##El cerebro de la aplicación: **app.py**
+## El cerebro de la aplicación: **app.py**
 1. Importaciones y Configuración Inicial
 Framework: Se importa **Flask** para crear la app y herramientas como **render_template** (para mostrar HTML) y **request**/**redirect** para manejar datos del usuario.
 Servicios Externos: Importas funciones de **social_api.py** para obtener los posts y de **database_api.py** para guardar favoritos en Supabase.
@@ -60,8 +60,8 @@ if __name__ == "__main__":
 Modo Debug: Al estar en **True**, el servidor se reinicia automáticamente cada vez que guardas un cambio en el código y te muestra errores detallados si algo falla, lo cual es ideal para desarrollo.
 ##Vista de la aplicación.
 
-##Consumo de las APIs
-###social_api.py
+## Consumo de las APIs
+### social_api.py
 Debido a las restricciones de acceso a la API real de Instagram, este módulo actúa como un mock service (servicio de simulación) que provee la información necesaria para alimentar el feed de la aplicación.
 
 Funcionalidades principales:
@@ -78,7 +78,7 @@ Atributos de cada post:
 | permalink | Enlace directo a la publicación original en Instagram. |
 | track_id | Código alfanumérico de Spotify para el reproductor embebido. |
 ```
-###database_api.py
+### database_api.py
 Este módulo se encarga de la persistencia de datos conectando la aplicación con una instancia de Supabase (PostgreSQL) mediante su API REST. Permite que las interacciones del usuario (favoritos) se almacenen de forma permanente en la nube.
 
 Componentes principales:
@@ -87,7 +87,7 @@ Componentes principales:
 **Manejo de Datos**: Envía un objeto JSON (payload) que vincula el ID del post, el título de la canción y su identificador de Spotify.
 **Confirmación**: Valida el éxito de la operación verificando los códigos de estado HTTP **200** o **201**.
 
-###streaming_api.py
+### streaming_api.py
 Este servicio gestiona la comunicación con la **Spotify Web API** utilizando la librería spotipy. Su función principal es validar y buscar contenido musical para asegurar que cada post esté vinculado a un recurso real de la plataforma de streaming.
 
 Características principales:
@@ -96,8 +96,8 @@ Características principales:
 **Manejo de Resultados**: Filtra los resultados para obtener únicamente el primer track coincidente (**limit=1**) y retorna su **Spotify ID** único.
 **Robustez**: Incluye una validación para retornar **None** en caso de que la búsqueda no arroje resultados, evitando errores de ejecución en la aplicación principal.
 
-##Aplicación en html
-###base.html
+## Aplicación en html
+### base.html
 Este archivo actúa como el esqueleto principal de la aplicación, utilizando el motor de plantillas Jinja2 para mantener la consistencia visual en todas las páginas y centralizar la lógica interactiva.
 
 Componentes clave:
@@ -111,7 +111,7 @@ El archivo incluye un script especializado que mejora la experiencia de usuario 
 **Retroalimentación en Tiempo Real**: Al recibir una respuesta exitosa del servidor, el botón cambia dinámicamente su texto a "❤️ Guardado" y muestra un mensaje de confirmación ("Guardado ✔"), desactivando el botón para evitar duplicados.
 **Gestión de Datos**: Extrae de forma automática el ID del post, el título y el ID de la pista desde los atributos **data** del formulario.
 
-###index.html
+### index.html
 Este archivo es el responsable de renderizar la página de inicio, transformando los datos crudos del servicio social en una interfaz visual atractiva y organizada.
 
 Características principales:
@@ -122,7 +122,7 @@ Características principales:
   Enlace de Detalle: Utiliza url_for para generar rutas dinámicas hacia post_detail,         permitiendo al usuario navegar hacia la vista expandida de cada publicación mediante el    botón "Ver más".
 **Diseño Responsivo**: Se apoya en la clase CSS **.feed**, la cual utiliza **CSS Grid** para organizar las tarjetas de forma flexible, adaptando el número de columnas según el tamaño de la pantalla del dispositivo.
 
-###post.html
+### post.html
 Este archivo representa la vista detallada de cada publicación. Su función es integrar la simulación de redes sociales con el reproductor interactivo de Spotify, proporcionando una experiencia inmersiva al usuario.
 
 Componentes clave del diseño:
@@ -140,17 +140,21 @@ Componentes clave del diseño:
 **Atributos de Datos**: El formulario utiliza atributos **data-*** (**data-post-id**, **data-track-id, data-title**) para almacenar la información de forma invisible en el HTML.
 **Interacción Sin Recarga**: En lugar de un envío de formulario tradicional, estos datos son extraídos por el script de **base.html** para realizar una petición asíncrona a la API de favoritos, permitiendo que el usuario guarde la canción sin abandonar la página.
 
-##Vista de la app.
-###Pantalla principal.
+## Vista de la app.
+### Pantalla principal.
 ![Vista de la pantalla principal](static/Actividad6_Pantallas/Pantalla_Principal.png)
-###Consumo de las api.
+### Consumo de las api.
+**APIs DE RED SOCIAL**
 ![API de red sociall](static/Actividad6_Pantallas/API_Red_Social.png)
+**APIs DE STREAMING**
 ![API de streamingl](static/Actividad6_Pantallas/API_Streaming_1.png)
 ![API de streamingl](static/Actividad6_Pantallas/API_Streaming_2.png)
 ![API de streamingl](static/Actividad6_Pantallas/API_Streaming_3.png)
+**APIs DE BASES DE DATOS**
 ![API de base de datosl](static/Actividad6_Pantallas/API_Database.png)
 ![API de base de datosl](static/Actividad6_Pantallas/API_Database_2.png)
 ###Diseño responsivo
+**VISTA MÓVIL**
 ![Vista en télefono móvill](static/Actividad6_Pantallas/Diseño_Responsivo_Telefono.png)
 ![Vista en tabletll](static/Actividad6_Pantallas/Diseño_Responsivo_Tablet.png)
 

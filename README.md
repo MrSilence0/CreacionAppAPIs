@@ -39,6 +39,7 @@ Instancia: **app = Flask(__name__)** crea el objeto principal que correrá tu se
 Es la puerta de entrada. Llama a **get_posts()** para traer la lista de publicaciones desde tu "base de datos" simulada en el servicio social y se las pasa al archivo index.html.
 
 **GET /post/<post_id>** (Detalle de Publicación)
+
 Esta ruta es dinámica (el **<post_id>** cambia según el post que selecciones).
 Búsqueda: Usa el ID de la URL para buscar el post específico con **get_post(post_id)**.
 Seguridad: Si el ID no existe, devuelve un error 404 "Post no encontrado".
@@ -47,7 +48,7 @@ Lógica del Iframe: Aquí es donde ocurre la magia que configuramos antes: la fu
 **POST /favorite/<post_id>** (Acción de Favoritos)
 Esta ruta no devuelve una página nueva, sino que procesa datos enviados desde un formulario.
 
-Captura de datos: Obtiene el **title** y el **track_id** que vienen ocultos en el formulario del post.
+**Captura de datos**: Obtiene el **title** y el **track_id** que vienen ocultos en el formulario del post.
 Transformación de ID: Hace una limpieza interesante: **int(post_id.replace("post", ""))**. Si el ID era "post1", lo convierte en el número **1** para que Supabase lo guarde como un entero.
 Persistencia: Llama a **save_to_favorites** para mandar esos datos a tu base de datos en la nube.
 Respuesta: Devuelve un código **200** (Éxito) sin recargar la página necesariamente (o vacío).
@@ -57,10 +58,11 @@ Respuesta: Devuelve un código **200** (Éxito) sin recargar la página necesari
 if __name__ == "__main__":
     app.run(debug=True)
 ```
-Modo Debug: Al estar en **True**, el servidor se reinicia automáticamente cada vez que guardas un cambio en el código y te muestra errores detallados si algo falla, lo cual es ideal para desarrollo.
+**Modo Debug**: Al estar en **True**, el servidor se reinicia automáticamente cada vez que guardas un cambio en el código y te muestra errores detallados si algo falla, lo cual es ideal para desarrollo.
 ##Vista de la aplicación.
 
 ## Consumo de las APIs
+
 ### social_api.py
 Debido a las restricciones de acceso a la API real de Instagram, este módulo actúa como un mock service (servicio de simulación) que provee la información necesaria para alimentar el feed de la aplicación.
 

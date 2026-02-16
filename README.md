@@ -104,13 +104,17 @@ Este archivo actúa como el esqueleto principal de la aplicación, utilizando el
 
 Componentes clave:
 **Estructura Maestra**: Define el **head** con metadatos esenciales, la vinculación a los estilos CSS y la etiqueta de viewport para asegurar que el diseño sea responsivo.
+
 **Bloques Dinámicos**: Utiliza **{% block content %}** para permitir que otras páginas (**index.html** y **post.html**) hereden el diseño base e inyecten su contenido específico.
+
 **Header Unificado**: Contiene la identidad visual del proyecto ("Darkest Room"), asegurando que el título y la descripción aparezcan en todas las secciones.
 
 Interactividad con JavaScript (Favoritos):
 El archivo incluye un script especializado que mejora la experiencia de usuario (UX) al guardar canciones:
 **Peticiones Asíncronas**: Utiliza la API **fetch** para enviar los datos a Supabase en segundo plano, evitando que la página se recargue por completo al dar "Me gusta".
+
 **Retroalimentación en Tiempo Real**: Al recibir una respuesta exitosa del servidor, el botón cambia dinámicamente su texto a "❤️ Guardado" y muestra un mensaje de confirmación ("Guardado ✔"), desactivando el botón para evitar duplicados.
+
 **Gestión de Datos**: Extrae de forma automática el ID del post, el título y el ID de la pista desde los atributos **data** del formulario.
 
 ### index.html
@@ -118,10 +122,14 @@ Este archivo es el responsable de renderizar la página de inicio, transformando
 
 Características principales:
 **Herencia de Plantilla**: Utiliza la instrucción **{% extends "base.html" %}** para adoptar el diseño global y los scripts de favoritos definidos en la base, inyectando su contenido específico en el bloque correspondiente.
+
 **Renderizado Dinámico**: Implementa un bucle **{% for post in posts %}** de Jinja2 que recorre la lista de publicaciones enviada por Flask, generando automáticamente una tarjeta para cada post.
+
 **Estructura de Tarjetas (.card)**: Cada publicación se encapsula en un contenedor que incluye:
+
   **Imagen del Post**: Muestra la fotografía mediante **{{ post.media_url }}**.
   Enlace de Detalle: Utiliza url_for para generar rutas dinámicas hacia post_detail,         permitiendo al usuario navegar hacia la vista expandida de cada publicación mediante el    botón "Ver más".
+  
 **Diseño Responsivo**: Se apoya en la clase CSS **.feed**, la cual utiliza **CSS Grid** para organizar las tarjetas de forma flexible, adaptando el número de columnas según el tamaño de la pantalla del dispositivo.
 
 ### post.html

@@ -179,16 +179,26 @@ Componentes clave del diseño:
 
 ![Vista de la pantalla principal](static/Actividad6_Pantallas/Pantalla_Principal.png)
 
+
 ### Consumo de las api.
 **APIs DE RED SOCIAL**
 ![API de red sociall](static/Actividad6_Pantallas/API_Red_Social.png)
+
+
 **APIs DE STREAMING**
+
 ![API de streamingl](static/Actividad6_Pantallas/API_Streaming_1.png)
+
 ![API de streamingl](static/Actividad6_Pantallas/API_Streaming_2.png)
+
 ![API de streamingl](static/Actividad6_Pantallas/API_Streaming_3.png)
+
+
 **APIs DE BASES DE DATOS**
 ![API de base de datosl](static/Actividad6_Pantallas/API_Database.png)
+
 ![API de base de datosl](static/Actividad6_Pantallas/API_Database_2.png)
+
 
 ###Diseño responsivo
 **VISTA MÓVIL**
